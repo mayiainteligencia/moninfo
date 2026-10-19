@@ -3,7 +3,7 @@ import { statusLabel, type Status } from '@/content/types';
 interface Props { status: Status }
 const { status } = Astro.props;
 const tone = status === 'live'
-  ? 'text-live border-live/40 bg-live/10 shadow-[0_0_12px_rgba(34,197,94,0.2)]'
+  ? 'text-live border-live/40 bg-live/10 shadow-[0_0_12px_rgba(219,242,133,0.25)]'
   : 'text-roadmap border-roadmap/30 bg-roadmap/10';
 ---
 <span class={`inline-flex items-center gap-1.5 rounded-full border px-2.5 py-0.5 font-mono text-[0.68rem] uppercase tracking-wider backdrop-blur ${tone}`}>

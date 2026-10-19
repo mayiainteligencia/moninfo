@@ -1,17 +1,17 @@
 // Mapa unico de recursos. Sube los archivos a public/assets/* y ajusta aqui si cambia el nombre.
 // Si un archivo de imagen no existe, <Img> usa el placeholder automaticamente.
 export const logos = {
-  mayia: { src: '/assets/logos/mayia.svg', alt: 'MAYIA' },
-  flai: { src: '/assets/logos/flai.svg', alt: 'FLAI Nube' },
-  escucha: { src: '/assets/logos/escucha.svg', alt: 'MAYIA Escucha' },
+  mayia: { src: '/assets/logos/mayiaLogoBlanco.png', alt: 'MAYIA' },
+  flai: { src: '/assets/logos/flai.png', alt: 'FLAI Nube' },
+  escucha: { src: '/assets/logos/mayiaEscuchaTrim.png', alt: 'MAYIA Escucha / Monitor IA' },
 } as const;
 
 export const images = {
   soc: {
-    src: '/assets/images/soc-edgenet.jpg',
-    alt: 'Centro de operaciones de seguridad (SOC) de Edgenet con pantallas de monitoreo y estaciones de trabajo',
-    width: 1920,
-    height: 1280,
+    src: '/assets/images/_opt/edgenet.JPG',
+    alt: 'Centro de operaciones de seguridad (SOC) de Edgenet con monitoreo de medios en tiempo real',
+    width: 1536,
+    height: 1024,
   },
   og: {
     src: '/assets/images/og.jpg',

@@ -5,9 +5,9 @@ const { href, variant = 'primary', external = false, class: cls = '' } = Astro.p
 const base = 'group inline-flex items-center justify-center gap-3 rounded-full px-5 py-3 text-sm font-medium transition-all duration-300 active:scale-[0.98]';
 
 const styles = variant === 'primary'
-  ? 'border border-line-strong bg-surface-2/90 text-fg shadow-lg backdrop-blur hover:border-accent hover:bg-surface-3 hover:shadow-[0_0_25px_rgba(34,197,94,0.35)]'
+  ? 'border border-line-strong bg-surface-2/90 text-fg shadow-lg backdrop-blur hover:border-accent hover:bg-surface-3 hover:shadow-[0_0_25px_rgba(219,242,133,0.35)]'
   : variant === 'pill-accent'
-  ? 'bg-accent text-bg font-semibold shadow-[0_0_30px_rgba(34,197,94,0.5)] hover:bg-accent-bright hover:scale-[1.02]'
+  ? 'bg-accent text-bg font-semibold shadow-[0_0_30px_rgba(219,242,133,0.5)] hover:bg-accent-bright hover:scale-[1.02]'
   : 'hairline text-fg/80 hover:border-line-strong hover:bg-surface-2 hover:text-fg';
 ---
 <a href={href} class={`${base} ${styles} ${cls}`} {...(external ? { target: '_blank', rel: 'noopener' } : {})}>

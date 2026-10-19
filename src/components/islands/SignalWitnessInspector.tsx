@@ -180,7 +180,7 @@ export default function SignalWitnessInspector() {
                   }}
                   className={`group relative flex flex-col items-start rounded-xl p-2.5 text-left transition-all duration-200 border ${
                     isSelected
-                      ? 'border-accent bg-accent/15 shadow-[0_0_15px_rgba(34,197,94,0.2)] scale-[1.01]'
+                      ? 'border-accent bg-accent/15 shadow-[0_0_15px_rgba(219,242,133,0.25)] scale-[1.01]'
                       : 'border-line-strong/60 bg-surface-2/60 hover:border-accent/50 hover:bg-surface-2/90'
                   }`}
                 >
@@ -191,7 +191,7 @@ export default function SignalWitnessInspector() {
                       {p.badge}
                     </span>
                     <span className={`size-1.5 rounded-full ${
-                      isSelected ? 'bg-accent shadow-[0_0_8px_#22c55e]' : 'bg-line-strong'
+                      isSelected ? 'bg-accent shadow-[0_0_8px_#DBF285]' : 'bg-line-strong'
                     }`} />
                   </div>
                   <span className={`mt-0.5 text-xs font-medium truncate w-full ${
@@ -260,7 +260,7 @@ export default function SignalWitnessInspector() {
                     <div
                       className={`w-full rounded-full transition-all duration-150 ${
                         isMatchZone
-                          ? 'bg-accent shadow-[0_0_8px_rgba(34,197,94,0.7)]'
+                          ? 'bg-accent shadow-[0_0_8px_rgba(219,242,133,0.7)]'
                           : 'bg-accent/25 hover:bg-accent/60'
                       }`}
                       style={{ height: `${Math.min(100, dynamicHeight)}%` }}
@@ -287,7 +287,7 @@ export default function SignalWitnessInspector() {
             </div>
             <p className="text-xs sm:text-sm leading-relaxed text-fg/90">
               <span>{activePattern.prefixText}</span>
-              <mark className="rounded bg-accent/25 px-1 py-0.2 font-semibold text-accent-bright border border-accent/40 shadow-[0_0_10px_rgba(34,197,94,0.3)]">
+              <mark className="rounded bg-accent/25 px-1 py-0.2 font-semibold text-accent-bright border border-accent/40 shadow-[0_0_10px_rgba(219,242,133,0.3)]">
                 {activePattern.highlightWord}
               </mark>
               <span>{activePattern.suffixText}</span>

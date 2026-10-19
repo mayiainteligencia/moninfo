@@ -82,11 +82,11 @@ export default function HeroWave() {
       const mid = h * 0.52;
       const cursor = w * 0.5;
 
-      // 1. Resplandor volumétrico central esmeralda
+      // 1. Resplandor volumétrico central cyber lime
       const glow = ctx.createRadialGradient(cursor, mid, 15, cursor, mid, Math.min(w, h) * 0.85);
-      glow.addColorStop(0, 'rgba(34, 197, 94, 0.22)');
-      glow.addColorStop(0.35, 'rgba(21, 128, 61, 0.11)');
-      glow.addColorStop(0.7, 'rgba(4, 28, 14, 0.04)');
+      glow.addColorStop(0, 'rgba(219, 242, 133, 0.22)');
+      glow.addColorStop(0.35, 'rgba(114, 144, 19, 0.12)');
+      glow.addColorStop(0.7, 'rgba(14, 22, 6, 0.04)');
       glow.addColorStop(1, 'transparent');
       ctx.fillStyle = glow;
       ctx.fillRect(0, 0, w, h);
@@ -104,11 +104,11 @@ export default function HeroWave() {
         ctx.moveTo(p.x + p.size, p.y);
         ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
       }
-      ctx.fillStyle = 'rgba(74, 222, 128, 0.38)';
+      ctx.fillStyle = 'rgba(219, 242, 133, 0.38)';
       ctx.fill();
 
       // 3. Guía sutil de frecuencia
-      ctx.strokeStyle = 'rgba(74, 222, 128, 0.08)';
+      ctx.strokeStyle = 'rgba(219, 242, 133, 0.08)';
       ctx.lineWidth = 1;
       ctx.setLineDash([3, 8]);
       ctx.beginPath();
@@ -142,7 +142,7 @@ export default function HeroWave() {
           const baseHeight = amp(c, now) * (h * 0.36);
           const dustAlpha = Math.max(0, (1 - dissolve) * 0.75);
 
-          ctx.fillStyle = inKey ? `rgba(74, 222, 128, ${dustAlpha})` : `rgba(167, 243, 208, ${dustAlpha})`;
+          ctx.fillStyle = inKey ? `rgba(219, 242, 133, ${dustAlpha})` : `rgba(237, 251, 193, ${dustAlpha})`;
           ctx.beginPath();
           for (let p = 0; p < dustCount; p++) {
             const pSeed = (p * 0.33 + randSeed) % 1;
@@ -170,12 +170,12 @@ export default function HeroWave() {
           const distToCursor = x - cursor;
           const alphaFade = Math.min(1, Math.max(0.15, 1 - distToCursor / (w * 0.52))) * intactAlpha;
 
-          ctx.fillStyle = 'rgba(74, 222, 128, 0.85)';
+          ctx.fillStyle = 'rgba(219, 242, 133, 0.85)';
           ctx.globalAlpha = alphaFade;
           ctx.fillRect(x - 1.5, mid - barHeight, 3, barHeight * 2);
 
           // Punta brillante
-          ctx.fillStyle = '#86efac';
+          ctx.fillStyle = '#EDFBC1';
           ctx.fillRect(x - 1, mid - barHeight - 2, 2, 2);
         } else {
           // Texto transcrito
@@ -183,7 +183,7 @@ export default function HeroWave() {
           const textFade = Math.min(1, Math.max(0.12, 1 - distLeft / (cursor * 0.96))) * intactAlpha;
 
           ctx.globalAlpha = textFade;
-          ctx.fillStyle = inKey ? '#4ade80' : '#e2e8f0';
+          ctx.fillStyle = inKey ? '#DBF285' : '#e2e8f0';
           ctx.font = '600 13px ui-monospace, SFMono-Regular, Menlo, monospace';
           ctx.textAlign = 'center';
           const ch = TEXT[charIdx] ?? '';
@@ -193,16 +193,16 @@ export default function HeroWave() {
         }
       }
 
-      // 5. Cabezal de escaneo luminoso vertical (haz láser verde estilo screenshot)
+      // 5. Cabezal de escaneo luminoso vertical (haz láser estilo screenshot)
       const headAlpha = Math.max(0, 1 - snap * 1.5);
       if (headAlpha > 0.01) {
         ctx.globalAlpha = headAlpha;
         const beamGrad = ctx.createLinearGradient(0, 0, 0, h);
-        beamGrad.addColorStop(0, 'rgba(74, 222, 128, 0)');
-        beamGrad.addColorStop(0.2, 'rgba(74, 222, 128, 0.3)');
-        beamGrad.addColorStop(0.5, 'rgba(74, 222, 128, 0.95)');
-        beamGrad.addColorStop(0.8, 'rgba(74, 222, 128, 0.3)');
-        beamGrad.addColorStop(1, 'rgba(74, 222, 128, 0)');
+        beamGrad.addColorStop(0, 'rgba(219, 242, 133, 0)');
+        beamGrad.addColorStop(0.2, 'rgba(219, 242, 133, 0.3)');
+        beamGrad.addColorStop(0.5, 'rgba(219, 242, 133, 0.95)');
+        beamGrad.addColorStop(0.8, 'rgba(219, 242, 133, 0.3)');
+        beamGrad.addColorStop(1, 'rgba(219, 242, 133, 0)');
 
         ctx.fillStyle = beamGrad;
         ctx.fillRect(cursor - 1, 0, 2, h);
@@ -210,7 +210,7 @@ export default function HeroWave() {
         // Halo luminoso en el centro del haz acústico
         const beamGlow = ctx.createRadialGradient(cursor, mid, 1, cursor, mid, 30);
         beamGlow.addColorStop(0, 'rgba(255, 255, 255, 0.9)');
-        beamGlow.addColorStop(0.35, 'rgba(74, 222, 128, 0.5)');
+        beamGlow.addColorStop(0.35, 'rgba(219, 242, 133, 0.5)');
         beamGlow.addColorStop(1, 'transparent');
         ctx.fillStyle = beamGlow;
         ctx.beginPath();

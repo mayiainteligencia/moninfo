@@ -8,7 +8,7 @@ const Bar = ({ label, value, max = 100 }: { label: string; value: number; max?: 
     <span className="truncate text-muted font-medium">{label}</span>
     <span className="h-3 overflow-hidden rounded-full bg-surface-3 p-0.5 border border-line/40">
       <span
-        className="block h-full rounded-full bg-gradient-to-r from-accent/80 to-accent-bright shadow-[0_0_15px_rgba(34,197,94,0.5)] transition-[width] duration-700"
+        className="block h-full rounded-full bg-gradient-to-r from-accent/80 to-accent-bright shadow-[0_0_15px_rgba(219,242,133,0.5)] transition-[width] duration-700"
         style={{ width: `${(value / max) * 100}%` }}
       />
     </span>
@@ -35,7 +35,7 @@ export default function ElectoralBoard() {
             onClick={() => setTab(t.id)}
             className={`rounded-full px-5 py-2 text-xs font-mono uppercase tracking-wider transition-all duration-300 ${
               tab === t.id
-                ? 'bg-accent text-bg font-semibold shadow-[0_0_20px_rgba(34,197,94,0.4)] scale-105'
+                ? 'bg-accent text-bg font-semibold shadow-[0_0_20px_rgba(219,242,133,0.4)] scale-105'
                 : 'border border-line bg-surface/50 text-muted hover:border-line-strong hover:text-fg'
             }`}
           >
@@ -52,7 +52,7 @@ export default function ElectoralBoard() {
               <li key={s.name} className="grid gap-2 text-sm">
                 <span className="text-fg font-medium">{s.name}</span>
                 <span className="flex h-3.5 overflow-hidden rounded-full border border-line/40 bg-surface-3 p-0.5" role="img" aria-label={`Positivo ${s.pos}%, neutral ${s.neu}%, negativo ${s.neg}%`}>
-                  <span className="rounded-l-full bg-live shadow-[0_0_10px_rgba(34,197,94,0.4)] transition-all duration-700" style={{ width: `${s.pos}%` }} />
+                  <span className="rounded-l-full bg-live shadow-[0_0_10px_rgba(219,242,133,0.4)] transition-all duration-700" style={{ width: `${s.pos}%` }} />
                   <span className="bg-subtle transition-all duration-700" style={{ width: `${s.neu}%` }} />
                   <span className="rounded-r-full bg-signal shadow-[0_0_10px_rgba(239,68,68,0.4)] transition-all duration-700" style={{ width: `${s.neg}%` }} />
                 </span>

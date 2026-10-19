@@ -170,7 +170,7 @@ function init() {
             const isActive = dIdx === activeIdx;
             dot.classList.toggle('bg-accent', isActive);
             dot.classList.toggle('scale-125', isActive);
-            dot.classList.toggle('shadow-[0_0_8px_#22c55e]', isActive);
+            dot.classList.toggle('shadow-[0_0_8px_#DBF285]', isActive);
             dot.classList.toggle('bg-line-strong', !isActive);
           });
         },
