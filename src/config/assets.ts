@@ -8,7 +8,7 @@ export const logos = {
 
 export const images = {
   soc: {
-    src: '/assets/images/_opt/edgenet.JPG',
+    src: '/assets/images/edgenet.jpg',
     alt: 'Centro de operaciones de seguridad (SOC) de Edgenet con monitoreo de medios en tiempo real',
     width: 1536,
     height: 1024,
