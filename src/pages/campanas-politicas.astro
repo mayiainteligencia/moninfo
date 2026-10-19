@@ -1,0 +1,62 @@
+---
+import Base from '@/layouts/Base.astro';
+import Section from '@/components/ui/Section.astro';
+import Card from '@/components/ui/Card.astro';
+import Badge from '@/components/ui/Badge.astro';
+import Icon from '@/components/ui/Icon.astro';
+import Reveal from '@/components/motion/Reveal.astro';
+import ElectoralBoard from '@/components/islands/ElectoralBoard';
+import FAQ from '@/components/sections/FAQ.astro';
+import CTA from '@/components/sections/CTA.astro';
+import { meta, hero, capabilities, how, dashboard, principles, faq } from '@/content/campanas';
+import { routes } from '@/config/site';
+import { organization, faqPage, breadcrumb } from '@/lib/seo';
+---
+<Base title={meta.title} description={meta.description} path={routes.campanas.path}
+  jsonLd={[organization(), faqPage(faq), breadcrumb([{ name: 'Inicio', path: '/' }, { name: routes.campanas.label, path: routes.campanas.path }])]}>
+  <section class="relative isolate overflow-hidden pb-16 pt-36 md:pt-44" aria-labelledby="page-title">
+    <div class="pointer-events-none absolute inset-0 -z-10" aria-hidden="true" style="background: radial-gradient(70% 60% at 20% 10%, rgba(34, 197, 94, 0.16), transparent 75%), radial-gradient(40% 40% at 80% 30%, rgba(21, 128, 61, 0.1), transparent 70%);"></div>
+
+    <div class="container-x">
+      <p class="eyebrow hero-in mb-6">{hero.eyebrow}</p>
+      <h1 id="page-title" class="hero-in max-w-4xl text-4xl font-semibold md:text-7xl" style="--d:.08s">{hero.title}</h1>
+      <p class="hero-in mt-8 max-w-2xl text-lg text-muted md:text-xl" style="--d:.18s">{hero.lead}</p>
+    </div>
+  </section>
+
+  <Section id="capacidades" eyebrow="Capacidades" title="Qué incluye Cerebro Electoral.">
+    <Reveal class="grid gap-4 md:grid-cols-2 lg:grid-cols-3" stagger>
+      {capabilities.map((c) => (
+        <Card tilt class="h-full">
+          <div class="mb-5 flex items-start justify-between">
+            <span class="flex size-10 items-center justify-center rounded-md bg-surface-3 text-accent"><Icon name={c.icon} /></span>
+            <Badge status={c.status} />
+          </div>
+          <h3 class="text-lg font-semibold">{c.title}</h3>
+          <p class="mt-2 text-sm text-muted">{c.description}</p>
+        </Card>
+      ))}
+    </Reveal>
+  </Section>
+
+  <Section id="como" eyebrow={how.eyebrow} title={how.title}>
+    <Reveal as="ol" class="grid gap-6 md:grid-cols-4" stagger>
+      {how.steps.map((s, i) => (
+        <li class="border-t border-line-strong pt-5">
+          <p class="font-mono text-xs text-accent">0{i + 1}</p>
+          <h3 class="mt-2 text-xl font-semibold">{s.title}</h3>
+          <p class="mt-2 text-sm text-muted">{s.text}</p>
+        </li>
+      ))}
+    </Reveal>
+  </Section>
+
+  <Section id="tablero" eyebrow={dashboard.eyebrow} title={dashboard.title}>
+    <ElectoralBoard client:visible />
+  </Section>
+
+  <Section id="principios" title={principles.title} lead={principles.body} class="!pt-0" />
+
+  <FAQ items={faq} />
+  <CTA />
+</Base>

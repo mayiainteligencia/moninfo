@@ -1,0 +1,18 @@
+---
+interface Props { id?: string; eyebrow?: string; title?: string; lead?: string; class?: string; headingLevel?: 'h1' | 'h2' }
+const { id, eyebrow, title, lead, class: cls = '', headingLevel = 'h2' } = Astro.props;
+import Reveal from '@/components/motion/Reveal.astro';
+import TextSplit from '@/components/motion/TextSplit.astro';
+---
+<section id={id} aria-labelledby={id ? `${id}-title` : undefined} class={`relative py-24 md:py-32 ${cls}`}>
+  <div class="container-x">
+    {(eyebrow || title || lead) && (
+      <header class="mb-14 max-w-3xl">
+        {eyebrow && <Reveal><p class="eyebrow mb-4">{eyebrow}</p></Reveal>}
+        {title && <TextSplit as={headingLevel} id={id ? `${id}-title` : undefined} class="text-4xl font-semibold md:text-6xl" text={title} />}
+        {lead && <Reveal delay={0.1}><p class="mt-6 text-lg text-muted md:text-xl">{lead}</p></Reveal>}
+      </header>
+    )}
+    <slot />
+  </div>
+</section>

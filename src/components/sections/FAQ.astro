@@ -1,0 +1,20 @@
+---
+import type { Faq } from '@/content/types';
+import Section from '@/components/ui/Section.astro';
+import Icon from '@/components/ui/Icon.astro';
+interface Props { items: Faq[]; id?: string }
+const { items, id = 'faq' } = Astro.props;
+---
+<Section id={id} eyebrow="Preguntas frecuentes" title="Respuestas directas.">
+  <div class="max-w-3xl divide-y divide-line border-y border-line">
+    {items.map((f) => (
+      <details class="group py-5">
+        <summary class="flex cursor-pointer list-none items-center justify-between gap-6 text-lg font-medium">
+          <h3 class="text-lg font-medium tracking-normal">{f.q}</h3>
+          <Icon name="plus" class="shrink-0 text-accent transition-transform duration-300 group-open:rotate-45" />
+        </summary>
+        <p class="mt-4 max-w-2xl leading-relaxed text-muted">{f.a}</p>
+      </details>
+    ))}
+  </div>
+</Section>

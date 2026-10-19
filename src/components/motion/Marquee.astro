@@ -1,0 +1,8 @@
+---
+interface Props { reverse?: boolean; speed?: number; label?: string }
+const { reverse = false, speed = 40, label } = Astro.props;
+---
+<div class="marquee" style={`--marquee-speed:${speed}s`} {...(reverse ? { 'data-reverse': '' } : {})} role="group" aria-label={label}>
+  <div class="marquee-track"><slot /></div>
+  <div class="marquee-track" aria-hidden="true"><slot /></div>
+</div>

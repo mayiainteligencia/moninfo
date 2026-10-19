@@ -1,0 +1,137 @@
+---
+import Button from '@/components/ui/Button.astro';
+import Reveal from '@/components/motion/Reveal.astro';
+import Icon from '@/components/ui/Icon.astro';
+import Counter from '@/components/ui/Counter.astro';
+import SignalWitnessInspector from '@/components/islands/SignalWitnessInspector';
+---
+<section id="escucha" class="relative isolate py-24 md:py-32 overflow-hidden border-t border-line/40">
+  <!-- Atmósfera de luz ambiental esmeralda táctica -->
+  <div class="pointer-events-none absolute -left-48 top-1/4 -z-10 size-[500px] rounded-full bg-accent/10 blur-[140px]" aria-hidden="true"></div>
+  <div class="pointer-events-none absolute -right-48 bottom-1/4 -z-10 size-[500px] rounded-full bg-accent/8 blur-[140px]" aria-hidden="true"></div>
+
+  <div class="container-x">
+    <!-- Encabezado de Sección: Estilo Editorial & Ciber-Inteligencia -->
+    <div class="max-w-3xl">
+      <div class="flex items-center gap-2 mb-4">
+        <div class="h-1 w-10 rounded-full bg-accent shadow-[0_0_12px_rgba(34,197,94,0.7)]"></div>
+        <span class="font-mono text-xs uppercase tracking-widest text-accent font-semibold">// NODO DE MONITOREO LOCAL</span>
+      </div>
+      <h2 class="text-3xl font-bold tracking-tight text-white sm:text-4xl md:text-5xl leading-[1.08]">
+        Escucha local, <br />
+        <span class="text-accent">rápida y verificable.</span>
+      </h2>
+      <p class="mt-4 text-base text-muted/90 sm:text-lg leading-relaxed">
+        MAYIA Escucha es el sistema de monitoreo de medios de MAYIA. Transcribe con Whisper en servidor propio, sin costo por minuto de transcripción, y conserva un testigo por cada coincidencia.
+      </p>
+    </div>
+
+    <!-- 1. Grid de Telemetría: Instrumentos de Precisión -->
+    <Reveal class="mt-14 grid gap-4 sm:grid-cols-2 lg:grid-cols-4" stagger>
+      <!-- Métrica 1: Captura -->
+      <div class="group relative overflow-hidden rounded-2xl border border-line-strong/60 bg-surface-2/60 p-6 shadow-card backdrop-blur-xl transition-all duration-300 hover:border-accent/60 hover:bg-surface-2/80 hover:shadow-[0_0_30px_rgba(34,197,94,0.15)]">
+        <div class="flex items-center justify-between font-mono text-[0.7rem] text-muted">
+          <span class="flex items-center gap-1.5 text-accent font-semibold">
+            <Icon name="audio-lines" size={14} />
+            <span>VENTANA CAPTURA</span>
+          </span>
+          <span class="rounded bg-surface-3 px-2 py-0.5 text-accent-bright font-mono text-[0.68rem]">16 kHz MONO</span>
+        </div>
+        <div class="mt-5">
+          <Counter to={5} suffix=" s" label="" />
+        </div>
+        <!-- Visualizador de Buffer Continuo -->
+        <div class="mt-4 flex items-center gap-1.5">
+          <div class="flex items-end gap-1 h-3.5 flex-1">
+            <span class="w-1.5 h-2 rounded-full bg-accent/40 group-hover:bg-accent transition-colors"></span>
+            <span class="w-1.5 h-3.5 rounded-full bg-accent/80 group-hover:bg-accent transition-colors"></span>
+            <span class="w-1.5 h-2.5 rounded-full bg-accent/60 group-hover:bg-accent transition-colors"></span>
+            <span class="w-1.5 h-3.5 rounded-full bg-accent group-hover:bg-accent transition-colors"></span>
+            <span class="w-1.5 h-2 rounded-full bg-accent/50 group-hover:bg-accent transition-colors"></span>
+            <span class="w-1.5 h-3 rounded-full bg-accent/70 group-hover:bg-accent transition-colors"></span>
+            <span class="w-1.5 h-1.5 rounded-full bg-accent/30 group-hover:bg-accent transition-colors"></span>
+          </div>
+          <span class="font-mono text-[0.65rem] text-subtle uppercase">Buffer Activo</span>
+        </div>
+        <p class="mt-3 text-xs text-muted leading-relaxed">Por segmento continuo de captura sin pérdida de señal ni silencios.</p>
+      </div>
+
+      <!-- Métrica 2: Inferencia -->
+      <div class="group relative overflow-hidden rounded-2xl border border-line-strong/60 bg-surface-2/60 p-6 shadow-card backdrop-blur-xl transition-all duration-300 hover:border-accent/60 hover:bg-surface-2/80 hover:shadow-[0_0_30px_rgba(34,197,94,0.15)]">
+        <div class="flex items-center justify-between font-mono text-[0.7rem] text-muted">
+          <span class="flex items-center gap-1.5 text-accent font-semibold">
+            <Icon name="cpu" size={14} />
+            <span>INFERENCIA GPU</span>
+          </span>
+          <span class="rounded bg-surface-3 px-2 py-0.5 text-accent-bright font-mono text-[0.68rem]">WHISPER PROPIO</span>
+        </div>
+        <div class="mt-5">
+          <Counter to={0.3} decimals={1} suffix=" s" label="" />
+        </div>
+        <!-- Barra de progreso benchmarking -->
+        <div class="mt-4">
+          <div class="h-1.5 w-full overflow-hidden rounded-full bg-surface-3">
+            <div class="h-full w-[16%] rounded-full bg-accent shadow-[0_0_8px_rgba(74,222,128,0.8)]"></div>
+          </div>
+          <div class="mt-1 flex justify-between font-mono text-[0.65rem] text-subtle">
+            <span>0.3s PROCESO</span>
+            <span class="text-accent">94% HOLGURA</span>
+          </div>
+        </div>
+        <p class="mt-3 text-xs text-muted leading-relaxed">En transcribir 5 s de audio con hardware local y cero costo por minuto.</p>
+      </div>
+
+      <!-- Métrica 3: RTF -->
+      <div class="group relative overflow-hidden rounded-2xl border border-line-strong/60 bg-surface-2/60 p-6 shadow-card backdrop-blur-xl transition-all duration-300 hover:border-accent/60 hover:bg-surface-2/80 hover:shadow-[0_0_30px_rgba(34,197,94,0.15)]">
+        <div class="flex items-center justify-between font-mono text-[0.7rem] text-muted">
+          <span class="flex items-center gap-1.5 text-accent font-semibold">
+            <Icon name="gauge" size={14} />
+            <span>FACTOR RTF</span>
+          </span>
+          <span class="rounded bg-accent/15 px-2 py-0.5 text-accent-bright font-mono text-[0.68rem] font-semibold">16.6x VELOCIDAD</span>
+        </div>
+        <div class="mt-5">
+          <Counter to={0.06} decimals={2} prefix="≈ " label="" />
+        </div>
+        <div class="mt-4 flex items-center gap-2">
+          <span class="size-2 rounded-full bg-accent animate-pulse"></span>
+          <span class="font-mono text-[0.68rem] text-accent font-medium">TIEMPO REAL SIMULTÁNEO</span>
+        </div>
+        <p class="mt-3 text-xs text-muted leading-relaxed">Factor de tiempo real que permite monitorear decenas de canales a la vez.</p>
+      </div>
+
+      <!-- Métrica 4: Testigo Inmutable -->
+      <div class="group relative overflow-hidden rounded-2xl border border-line-strong/60 bg-surface-2/60 p-6 shadow-card backdrop-blur-xl transition-all duration-300 hover:border-accent/60 hover:bg-surface-2/80 hover:shadow-[0_0_30px_rgba(34,197,94,0.15)]">
+        <div class="flex items-center justify-between font-mono text-[0.7rem] text-muted">
+          <span class="flex items-center gap-1.5 text-accent font-semibold">
+            <Icon name="file-check" size={14} />
+            <span>AUDITORÍA</span>
+          </span>
+          <span class="rounded bg-surface-3 px-2 py-0.5 text-subtle font-mono text-[0.68rem]">INMUTABLE</span>
+        </div>
+        <div class="mt-5">
+          <p class="font-mono text-4xl font-semibold tracking-tight text-white md:text-5xl">100%</p>
+        </div>
+        <div class="mt-4 font-mono text-[0.65rem] text-accent truncate bg-surface-3/50 px-2 py-1 rounded border border-line/40">
+          SHA-256 AUDITABLE
+        </div>
+        <p class="mt-3 text-xs text-muted leading-relaxed">Audio original recortado y texto archivados por cada coincidencia.</p>
+      </div>
+    </Reveal>
+
+    <!-- 2. Consola de Detección e Inspección de Testigos Forenses (Interactivo & Artesanal) -->
+    <div class="mt-12">
+      <SignalWitnessInspector client:visible />
+    </div>
+
+    <!-- 3. Botón de Acción Principal -->
+    <div class="mt-12 flex items-center justify-start">
+      <Button href="/monitoreo-de-medios" variant="primary">
+        <span>Ver MAYIA Escucha en detalle</span>
+        <span class="flex size-5 items-center justify-center rounded-full bg-accent text-bg shadow-sm transition-transform duration-300 group-hover:translate-x-0.5">
+          <Icon name="arrow-right" size={12} class="-rotate-45" />
+        </span>
+      </Button>
+    </div>
+  </div>
+</section>

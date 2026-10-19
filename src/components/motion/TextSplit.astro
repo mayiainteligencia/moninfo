@@ -1,0 +1,10 @@
+---
+// Separa por palabras en servidor (el texto sigue siendo legible para buscadores y lectores de pantalla).
+interface Props { text: string; as?: string; class?: string; id?: string; instant?: boolean }
+const { text, as, class: cls, id, instant = false } = Astro.props;
+const Tag = (as ?? 'h2') as 'h2';
+const words = text.split(' ');
+---
+<Tag id={id} class={cls} data-split={instant ? undefined : ''} aria-label={text}>
+  {words.map((w, i) => <><span class="w" aria-hidden="true"><span>{w}</span></span>{i < words.length - 1 ? ' ' : ''}</>)}
+</Tag>

@@ -1,0 +1,26 @@
+---
+import Base from '@/layouts/Base.astro';
+import Hero from '@/components/sections/Hero.astro';
+import Divisiones from '@/components/sections/Divisiones.astro';
+import SOC from '@/components/sections/SOC.astro';
+import Escucha from '@/components/sections/Escucha.astro';
+import Flow from '@/components/sections/Flow.astro';
+import Campanas from '@/components/sections/Campanas.astro';
+import FAQ from '@/components/sections/FAQ.astro';
+import CTA from '@/components/sections/CTA.astro';
+import { faqHome } from '@/content/home';
+import { organization, website, service, faqPage } from '@/lib/seo';
+
+const title = 'MAYIA Monitoreo de Medios | MAYIA Escucha (Monitor IA)';
+const description = 'MAYIA Escucha es el sistema de monitoreo de medios con IA de MAYIA: escucha radio en vivo, transcribe con Whisper y guarda un testigo por cada mención. Incluye SOC, nube y desarrollo con IA.';
+---
+<Base title={title} description={description} path="/" jsonLd={[organization(), website(), service(), faqPage(faqHome)]}>
+  <Hero />
+  <Escucha />
+  <Flow />
+  <Divisiones />
+  <SOC />
+  <Campanas />
+  <FAQ items={faqHome} />
+  <CTA />
+</Base>

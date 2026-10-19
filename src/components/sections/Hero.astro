@@ -1,0 +1,60 @@
+---
+import { hero } from '@/content/home';
+import HeroWave from '@/components/islands/HeroWave';
+---
+<section id="hero-section" class="relative isolate flex min-h-[100vh] flex-col justify-between overflow-hidden pb-8 pt-28 md:pb-12 md:pt-36" aria-labelledby="hero-title">
+  <!-- Atmósfera de iluminación esmeralda profunda centrada -->
+  <div class="pointer-events-none absolute inset-0 -z-20" aria-hidden="true"
+       style="background: radial-gradient(70% 60% at 50% 50%, rgba(34, 197, 94, 0.22), transparent 75%), radial-gradient(35% 35% at 85% 15%, rgba(21, 128, 61, 0.14), transparent 70%), radial-gradient(35% 35% at 15% 45%, rgba(16, 185, 129, 0.09), transparent 70%);"></div>
+
+  <!-- Capa inmersiva: Partículas en toda la sección + Onda de audio con efecto Zoom y polvo Thanos al hacer Scroll -->
+  <div data-wave-zoom class="pointer-events-none absolute inset-0 -z-10 origin-center will-change-transform">
+    <HeroWave client:load />
+  </div>
+
+  <!-- Capa Frontal: Exactamente como en el mockup / screenshot del usuario -->
+  <div data-hero-content class="container-x relative z-10 flex flex-1 flex-col justify-between py-2 md:py-6 pointer-events-none">
+    <!-- Extremo superior izquierdo: Línea verde, Título y Subtítulo corto -->
+    <div class="pointer-events-auto max-w-sm sm:max-w-md lg:max-w-xl text-left pt-2 md:pt-4">
+      <div class="h-1 w-12 rounded-full bg-accent mb-5 shadow-[0_0_12px_rgba(34,197,94,0.6)]"></div>
+      <h1 id="hero-title" class="hero-in text-5xl font-bold tracking-tight text-white sm:text-6xl md:text-7xl lg:text-[5.2rem] leading-[0.95]" style="--d:.08s">
+        Defendiendo <br />
+        <span class="text-accent">la Señal</span>
+      </h1>
+      <p class="hero-in mt-6 max-w-sm text-sm text-muted/90 sm:text-base leading-relaxed font-normal" style="--d:.16s">
+        Tiempo real con Whisper en servidor propio generando evidencia.
+      </p>
+    </div>
+
+    <!-- Espacio central completamente libre para que la onda acústica y el haz láser respiren -->
+    <div class="flex-1 min-h-[80px] md:min-h-[140px] pointer-events-none" aria-hidden="true"></div>
+
+    <!-- Fila Inferior: 'Desliza para explorar' a la izquierda + 'en Tiempo Real' a la derecha -->
+    <div class="flex items-end justify-between gap-6 pb-2 md:pb-4">
+      <!-- Izquierda abajo: Ícono de ratón y texto -->
+      <div class="pointer-events-auto hidden sm:flex items-center gap-3 text-xs text-muted/80 font-mono">
+        <div class="flex h-7 w-4 items-start justify-center rounded-full border border-line-strong p-1">
+          <div class="h-1.5 w-1 rounded-full bg-accent animate-bounce"></div>
+        </div>
+        <span class="text-line-strong">|</span>
+        <span>Desliza para explorar</span>
+      </div>
+
+      <!-- Derecha abajo: Cierre del titular y descripción completa -->
+      <div class="pointer-events-auto max-w-sm lg:max-w-md text-left sm:text-right">
+        <h2 class="hero-in text-4xl font-bold tracking-tight text-white sm:text-5xl md:text-6xl leading-[0.95]" style="--d:.14s">
+          en Tiempo <br />
+          <span class="text-accent">Real.</span>
+        </h2>
+        <p class="hero-in mt-4 text-xs text-muted/85 sm:text-sm leading-relaxed" style="--d:.22s">
+          {hero.lead}
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+
+

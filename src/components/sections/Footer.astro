@@ -1,0 +1,32 @@
+---
+import { site, routes } from '@/config/site';
+import { logos } from '@/config/assets';
+const social = Object.entries(site.social);
+const names: Record<string, string> = { linkedin: 'LinkedIn', x: 'X', instagram: 'Instagram', facebook: 'Facebook', youtube: 'YouTube' };
+---
+<footer class="border-t border-line bg-surface">
+  <div class="container-x grid gap-12 py-16 md:grid-cols-4">
+    <div class="md:col-span-2">
+      <img src={logos.escucha.src} alt={logos.escucha.alt} width="150" height="30" class="h-6 w-auto" loading="lazy" />
+      <p class="mt-4 max-w-md text-sm text-muted">MAYIA Escucha es el sistema de monitoreo de medios de MAYIA. Forma parte de la oferta de infraestructura y servicios de inteligencia artificial de MAYIA y FLAI.</p>
+    </div>
+    <nav aria-label="Sitio">
+      <h2 class="eyebrow mb-4 !text-muted">Sitio</h2>
+      <ul class="grid gap-2 text-sm">
+        {Object.values(routes).map((r) => <li><a class="text-muted hover:text-fg" href={r.path}>{r.label}</a></li>)}
+        <li><a class="text-muted hover:text-fg" href="/llms.txt">llms.txt</a></li>
+      </ul>
+    </nav>
+    <nav aria-label="Ecosistema y contacto">
+      <h2 class="eyebrow mb-4 !text-muted">Ecosistema</h2>
+      <ul class="grid gap-2 text-sm">
+        <li><a class="text-muted hover:text-fg" href={site.parents.mayia.url} target="_blank" rel="noopener">mayia.mx</a></li>
+        <li><a class="text-muted hover:text-fg" href={site.parents.flai.url} target="_blank" rel="noopener">flainube.mx</a></li>
+        <li><a class="text-muted hover:text-fg" href={site.contact.phoneHref}>{site.contact.phone}</a></li>
+        {site.contact.email && <li><a class="text-muted hover:text-fg" href={`mailto:${site.contact.email}`}>{site.contact.email}</a></li>}
+        {social.map(([k, url]) => <li><a class="text-muted hover:text-fg" href={url} target="_blank" rel="noopener">{names[k] ?? k}</a></li>)}
+      </ul>
+    </nav>
+  </div>
+  <div class="border-t border-line py-6 text-center text-xs text-subtle">© {new Date().getFullYear()} {site.legalName}. Todos los derechos reservados.</div>
+</footer>

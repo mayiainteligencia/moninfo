@@ -1,0 +1,8 @@
+---
+// speed: fraccion del alto del contenedor que se desplaza durante el scroll.
+interface Props { speed?: number; class?: string }
+const { speed = 0.15, class: cls = '' } = Astro.props;
+---
+<div class={`overflow-hidden ${cls}`} data-parallax-wrap>
+  <div class="h-[120%] -mt-[10%] w-full" data-parallax={speed}><slot /></div>
+</div>

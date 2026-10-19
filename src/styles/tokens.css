@@ -1,0 +1,43 @@
+/*
+ * Tokens de marca - Estilo Cyber-Intelligence Verde / Negro / Gris.
+ * Inspirado en estética high-tech de centros de operaciones y seguridad:
+ * Fondos obsidiana/esmeralda (#030704, #060f08, #0a170e), acentos neón verde (#22c55e, #4ade80),
+ * grises tácticos (#9ca3af, #6b7280) y líneas de luz verde difusa.
+ */
+@theme {
+  --color-bg: #030704;
+  --color-surface: #060f08;
+  --color-surface-2: #0a170e;
+  --color-surface-3: #112417;
+  --color-line: rgba(74, 222, 128, 0.12);
+  --color-line-strong: rgba(74, 222, 128, 0.28);
+  --color-fg: #f3f4f6;
+  --color-muted: #9ca3af;
+  --color-subtle: #6b7280;
+
+  --color-accent: #22c55e;
+  --color-accent-2: #166534;
+  --color-accent-bright: #4ade80;
+  --color-accent-lime: #a3e635;
+  --color-signal: #ef4444;
+  --color-signal-deep: #b91c1c;
+  --color-live: #22c55e;
+  --color-roadmap: #eab308;
+
+  --font-sans: 'Inter Variable', ui-sans-serif, system-ui, sans-serif;
+  --font-mono: 'JetBrains Mono Variable', ui-monospace, SFMono-Regular, Menlo, monospace;
+
+  --radius-sm: 0.5rem;
+  --radius-md: 0.875rem;
+  --radius-lg: 1.5rem;
+
+  --shadow-glow: 0 0 60px -15px rgba(34, 197, 94, 0.45);
+  --shadow-card: 0 24px 60px -25px rgba(0, 0, 0, 0.95);
+}
+
+:root {
+  color-scheme: dark;
+  --gradient-brand: linear-gradient(135deg, #4ade80 0%, #22c55e 50%, #16a34a 100%);
+  --gradient-emerald-glow: radial-gradient(circle at 50% 40%, rgba(34, 197, 94, 0.18) 0%, rgba(6, 78, 59, 0.1) 40%, transparent 70%);
+}
+

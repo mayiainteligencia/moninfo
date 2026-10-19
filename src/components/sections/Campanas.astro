@@ -1,0 +1,18 @@
+---
+import { hero } from '@/content/campanas';
+import Section from '@/components/ui/Section.astro';
+import Button from '@/components/ui/Button.astro';
+import Icon from '@/components/ui/Icon.astro';
+import Reveal from '@/components/motion/Reveal.astro';
+---
+<Section id="campanas" eyebrow={hero.eyebrow} title="Cerebro Electoral" lead={hero.lead}>
+  <Reveal class="grid gap-4 md:grid-cols-3" stagger>
+    {[['Menciones de candidatos', 'at-sign'], ['Tendencias de narrativa', 'trending-up'], ['Tablero de seguimiento', 'layout-dashboard']].map(([t, i]) => (
+      <div class="flex items-center gap-4 rounded-lg hairline bg-surface-2/60 p-5">
+        <span class="flex size-10 items-center justify-center rounded-md bg-surface-3 text-accent"><Icon name={i!} /></span>
+        <span class="font-medium">{t}</span>
+      </div>
+    ))}
+  </Reveal>
+  <div class="mt-10"><Button href="/campanas-politicas" variant="ghost">Conocer Cerebro Electoral<Icon name="arrow-right" size={16} class="transition-transform group-hover:translate-x-1" /></Button></div>
+</Section>

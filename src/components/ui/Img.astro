@@ -1,0 +1,25 @@
+---
+// Imagen optimizada: usa variantes AVIF/WebP generadas por scripts/optimize-images.mjs; cae al placeholder si falta el original.
+import fs from 'node:fs';
+import path from 'node:path';
+import { placeholder } from '@/config/assets';
+
+interface Props { src: string; alt: string; width: number; height: number; eager?: boolean; class?: string; sizes?: string; parallax?: boolean }
+const { src, alt, width, height, eager = false, class: cls = '', sizes = '100vw' } = Astro.props;
+
+const exists = fs.existsSync(path.join(process.cwd(), 'public', src));
+const base = src.replace(/\.[a-z]+$/i, '');
+const name = base.split('/').pop();
+const widths = [640, 1280, 1920];
+const set = (fmt: string) => widths.map((w) => `/assets/images/_opt/${name}-${w}.${fmt} ${w}w`).join(', ');
+const optimized = exists && fs.existsSync(path.join(process.cwd(), 'public/assets/images/_opt', `${name}-1280.avif`));
+---
+{optimized ? (
+  <picture>
+    <source type="image/avif" srcset={set('avif')} sizes={sizes} />
+    <source type="image/webp" srcset={set('webp')} sizes={sizes} />
+    <img src={src} alt={alt} width={width} height={height} class={cls} loading={eager ? 'eager' : 'lazy'} decoding="async" fetchpriority={eager ? 'high' : 'auto'} />
+  </picture>
+) : (
+  <img src={exists ? src : placeholder} alt={alt} width={width} height={height} class={cls} loading={eager ? 'eager' : 'lazy'} decoding="async" />
+)}

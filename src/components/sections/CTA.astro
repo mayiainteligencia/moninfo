@@ -1,0 +1,31 @@
+---
+import { cta } from '@/content/home';
+import { site } from '@/config/site';
+import Button from '@/components/ui/Button.astro';
+import Icon from '@/components/ui/Icon.astro';
+import Reveal from '@/components/motion/Reveal.astro';
+---
+<section id="contacto" aria-labelledby="cta-title" class="py-24 md:py-32">
+  <div class="container-x">
+    <div class="relative overflow-hidden rounded-3xl border border-line-strong/60 bg-surface-2/80 px-6 py-16 text-center shadow-card backdrop-blur-2xl md:px-16 md:py-24">
+      {/* Luz volumétrica esmeralda */}
+      <div class="pointer-events-none absolute inset-0" aria-hidden="true" style="background: radial-gradient(65% 90% at 50% 110%, rgba(34, 197, 94, 0.25), transparent 75%), radial-gradient(50% 50% at 50% 0%, rgba(21, 128, 61, 0.12), transparent 70%);"></div>
+      <div class="pointer-events-none absolute inset-0 grain opacity-20" aria-hidden="true"></div>
+      
+      <Reveal class="relative">
+        <div class="mb-4 inline-flex items-center gap-2 rounded-full border border-line bg-surface/70 px-3.5 py-1 text-xs font-mono text-accent">
+          <span class="size-1.5 rounded-full bg-accent animate-pulse"></span>
+          <span>RESPUESTA DIRECTA SOC</span>
+        </div>
+        <h2 id="cta-title" class="mx-auto max-w-3xl text-4xl font-semibold tracking-tight text-fg md:text-6xl">{cta.title}</h2>
+        <p class="mx-auto mt-6 max-w-xl text-lg text-muted">{cta.body}</p>
+        <div class="mt-10 flex flex-wrap justify-center gap-3">
+          <Button href={site.contact.phoneHref} variant="pill-accent"><Icon name="phone" size={16} />{site.contact.phone}</Button>
+          {site.contact.email && <Button href={`mailto:${site.contact.email}`} variant="ghost"><Icon name="mail" size={16} />{site.contact.email}</Button>}
+          <Button href={site.parents.mayia.url} variant="ghost" external>mayia.mx<Icon name="external" size={14} /></Button>
+          <Button href={site.parents.flai.url} variant="ghost" external>flainube.mx<Icon name="external" size={14} /></Button>
+        </div>
+      </Reveal>
+    </div>
+  </div>
+</section>

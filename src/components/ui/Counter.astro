@@ -1,0 +1,10 @@
+---
+interface Props { to: number; decimals?: number; prefix?: string; suffix?: string; label: string }
+const { to, decimals = 0, prefix = '', suffix = '', label } = Astro.props;
+---
+<div>
+  <p class="font-mono text-4xl font-medium tracking-tight md:text-5xl">
+    <span class="text-gradient" data-counter data-to={to} data-decimals={decimals} data-prefix={prefix} data-suffix={suffix}>{prefix}{to.toFixed(decimals)}{suffix}</span>
+  </p>
+  <p class="mt-2 text-sm text-muted">{label}</p>
+</div>

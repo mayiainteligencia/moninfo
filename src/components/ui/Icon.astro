@@ -1,0 +1,10 @@
+---
+import { Shield, Activity, Server, Cloud, Cpu, Radio, AudioLines, Search, FileCheck, Antenna, Tv, Newspaper, MapPin, LayoutDashboard, Brain, AtSign, Gauge, TrendingUp, ArrowRight, Phone, Mail, Plus, Check, ExternalLink } from '@lucide/astro';
+
+const map = { shield: Shield, activity: Activity, server: Server, cloud: Cloud, cpu: Cpu, radio: Radio, 'audio-lines': AudioLines, search: Search, 'file-check': FileCheck, antenna: Antenna, tv: Tv, newspaper: Newspaper, 'map-pin': MapPin, 'layout-dashboard': LayoutDashboard, brain: Brain, 'at-sign': AtSign, gauge: Gauge, 'trending-up': TrendingUp, 'arrow-right': ArrowRight, phone: Phone, mail: Mail, plus: Plus, check: Check, external: ExternalLink };
+export type IconName = keyof typeof map;
+interface Props { name: string; size?: number; class?: string }
+const { name, size = 20, class: cls } = Astro.props;
+const C = map[name as IconName] ?? Radio;
+---
+<C size={size} stroke-width={1.5} class={cls} aria-hidden="true" />

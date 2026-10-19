@@ -1,0 +1,75 @@
+---
+import Base from '@/layouts/Base.astro';
+import Section from '@/components/ui/Section.astro';
+import Card from '@/components/ui/Card.astro';
+import Badge from '@/components/ui/Badge.astro';
+import Button from '@/components/ui/Button.astro';
+import Icon from '@/components/ui/Icon.astro';
+import Counter from '@/components/ui/Counter.astro';
+import Reveal from '@/components/motion/Reveal.astro';
+import HeroWave from '@/components/islands/HeroWave';
+import Flow from '@/components/sections/Flow.astro';
+import FAQ from '@/components/sections/FAQ.astro';
+import CTA from '@/components/sections/CTA.astro';
+import { meta, hero, performance, stackItems, coverage, caveat, faq } from '@/content/monitoreo';
+import { stats } from '@/content/home';
+import { routes, site } from '@/config/site';
+import { organization, service, faqPage, breadcrumb } from '@/lib/seo';
+---
+<Base title={meta.title} description={meta.description} path={routes.monitoreo.path}
+  jsonLd={[organization(), service(), faqPage(faq), breadcrumb([{ name: 'Inicio', path: '/' }, { name: routes.monitoreo.label, path: routes.monitoreo.path }])]}>
+  <section class="relative isolate overflow-hidden pb-16 pt-36 md:pt-44" aria-labelledby="page-title">
+    <div class="pointer-events-none absolute inset-0 -z-10" aria-hidden="true" style="background: radial-gradient(70% 60% at 70% 10%, rgba(34, 197, 94, 0.16), transparent 75%), radial-gradient(40% 40% at 20% 30%, rgba(21, 128, 61, 0.1), transparent 70%);"></div>
+
+
+
+    <div class="container-x">
+      <p class="eyebrow hero-in mb-6">{hero.eyebrow}</p>
+      <h1 id="page-title" class="hero-in max-w-4xl text-4xl font-semibold md:text-7xl" style="--d:.08s">{hero.title}</h1>
+      <p class="hero-in mt-8 max-w-2xl text-lg text-muted md:text-xl" style="--d:.18s">{hero.lead}</p>
+      <div class="hero-in mt-12 w-full" style="--d:.32s"><HeroWave client:visible /></div>
+
+    </div>
+  </section>
+
+  <Flow id="ciclo" />
+
+  <Section id="rendimiento" eyebrow={performance.eyebrow} title={performance.title} lead={performance.body}>
+    <Reveal class="grid grid-cols-2 gap-10 border-y border-line py-12 lg:grid-cols-4" stagger>
+      {stats.map((s) => <Counter {...s} />)}
+    </Reveal>
+    <p class="mt-6 text-xs text-subtle">Mediciones internas; el resultado puede variar según el equipo y la carga.</p>
+  </Section>
+
+  <Section id="stack" eyebrow="Tecnología" title="Un stack simple y local.">
+    <Reveal class="grid gap-4 sm:grid-cols-2 lg:grid-cols-4" stagger>
+      {stackItems.map((s) => (
+        <Card tilt><p class="font-mono text-accent">{s.name}</p><p class="mt-3 text-sm text-muted">{s.text}</p></Card>
+      ))}
+    </Reveal>
+  </Section>
+
+  <Section id="cobertura" eyebrow="Cobertura" title="Lo que opera hoy y lo que viene."
+    lead="La radio por internet en vivo está operativa. El resto de la cobertura objetivo está en despliegue.">
+    <Reveal class="grid gap-4 md:grid-cols-2 lg:grid-cols-3" stagger>
+      {coverage.map((c) => (
+        <Card tilt class="h-full">
+          <div class="mb-5 flex items-start justify-between">
+            <span class="flex size-10 items-center justify-center rounded-md bg-surface-3 text-accent"><Icon name={c.icon} /></span>
+            <Badge status={c.status} />
+          </div>
+          <h3 class="text-lg font-semibold">{c.title}</h3>
+          <p class="mt-2 text-sm text-muted">{c.description}</p>
+        </Card>
+      ))}
+    </Reveal>
+    <p class="mt-8 text-sm text-muted">{caveat}</p>
+    <div class="mt-8 flex flex-wrap gap-3">
+      <Button href={routes.campanas.path} variant="ghost">Aplicación a campañas políticas<Icon name="arrow-right" size={16} /></Button>
+      <Button href={site.parents.mayia.url} variant="ghost" external>mayia.mx<Icon name="external" size={14} /></Button>
+    </div>
+  </Section>
+
+  <FAQ items={faq} />
+  <CTA />
+</Base>

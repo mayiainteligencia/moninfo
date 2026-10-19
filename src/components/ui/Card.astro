@@ -1,0 +1,10 @@
+---
+interface Props { tilt?: boolean; class?: string }
+const { tilt = false, class: cls = '' } = Astro.props;
+---
+<div class={`group relative overflow-hidden rounded-2xl border border-line/70 bg-surface-2/60 p-6 shadow-card backdrop-blur-xl transition-all duration-500 hover:border-accent/60 hover:bg-surface-2/90 hover:shadow-[0_0_40px_rgba(34,197,94,0.18)] ${cls}`} {...(tilt ? { 'data-tilt': '' } : {})}>
+  {/* Resplandor sutil superior en hover */}
+  <div class="pointer-events-none absolute -inset-px -top-24 h-32 w-full bg-gradient-to-b from-accent/10 to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
+  <slot />
+</div>
+
