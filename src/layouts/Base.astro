@@ -38,7 +38,8 @@ const ogImage = fs.existsSync(path.join(process.cwd(), 'public', ogFile)) ? `${s
     <meta name="twitter:description" content={description} />
     {ogImage && <meta name="twitter:image" content={ogImage} />}
     <meta name="theme-color" content="#05050a" />
-    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="icon" href="/favicon-64.png" type="image/png" sizes="64x64" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
     <script is:inline>if (!matchMedia('(prefers-reduced-motion: reduce)').matches) document.documentElement.classList.add('motion');</script>
     <noscript><style>[data-reveal],[data-split] .w>span{opacity:1!important;transform:none!important}</style></noscript>
     {jsonLd.map((d) => <script type="application/ld+json" set:html={JSON.stringify(d)} />)}
