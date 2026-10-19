@@ -96,7 +96,7 @@ function init() {
         end: '+=45%',
         pin: true,
         pinSpacing: true,
-        scrub: 0.3,
+        scrub: 0.8,
         anticipatePin: 1,
         onUpdate: (self) => {
           (window as any).__heroScrollProgress = self.progress;
@@ -241,9 +241,10 @@ function init() {
         if (dir > 0 && list[cur]! > y + 2) cur -= 1; // aun no llega al tope cercano: contarlo como siguiente
         const next = Math.min(list.length - 1, Math.max(0, cur + dir));
         busy = true;
+        const heroLeg = Math.min(cur, next) === 0 && Math.max(cur, next) === 1; // hero <-> primera diapositiva: mas lento para apreciar el zoom
         lenis.scrollTo(list[next]!, {
-          duration: 0.8,
-          easing: (t: number) => 1 - Math.pow(1 - t, 3),
+          duration: heroLeg ? 2.4 : 0.8,
+          easing: heroLeg ? (t: number) => (t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2) : (t: number) => 1 - Math.pow(1 - t, 3),
           lock: true,
           force: true,
           onComplete: () => {
