@@ -2,7 +2,7 @@
 import { site, routes } from '@/config/site';
 import { logos } from '@/config/assets';
 const social = Object.entries(site.social);
-const names: Record<string, string> = { linkedin: 'LinkedIn', x: 'X', instagram: 'Instagram', facebook: 'Facebook', youtube: 'YouTube' };
+const names: Record<string, string> = { linkedin: 'LinkedIn', instagram: 'Instagram' };
 ---
 <footer class="border-t border-line bg-surface">
   <div class="container-x grid gap-12 py-16 md:grid-cols-4">
@@ -14,7 +14,6 @@ const names: Record<string, string> = { linkedin: 'LinkedIn', x: 'X', instagram:
       <h2 class="eyebrow mb-4 !text-muted">Sitio</h2>
       <ul class="grid gap-2 text-sm">
         {Object.values(routes).map((r) => <li><a class="text-muted hover:text-fg" href={r.path}>{r.label}</a></li>)}
-        <li><a class="text-muted hover:text-fg" href="/llms.txt">llms.txt</a></li>
       </ul>
     </nav>
     <nav aria-label="Ecosistema y contacto">

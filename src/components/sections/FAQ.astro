@@ -1,20 +1,49 @@
 ---
 import type { Faq } from '@/content/types';
-import Section from '@/components/ui/Section.astro';
 import Icon from '@/components/ui/Icon.astro';
 interface Props { items: Faq[]; id?: string }
 const { items, id = 'faq' } = Astro.props;
 ---
-<Section id={id} eyebrow="Preguntas frecuentes" title="Respuestas directas.">
-  <div class="max-w-3xl divide-y divide-line border-y border-line">
-    {items.map((f) => (
-      <details class="group py-5">
-        <summary class="flex cursor-pointer list-none items-center justify-between gap-6 text-lg font-medium">
-          <h3 class="text-lg font-medium tracking-normal">{f.q}</h3>
-          <Icon name="plus" class="shrink-0 text-accent transition-transform duration-300 group-open:rotate-45" />
-        </summary>
-        <p class="mt-4 max-w-2xl leading-relaxed text-muted">{f.a}</p>
-      </details>
-    ))}
+<section id={id} aria-labelledby={`${id}-title`} class="relative py-2 sm:py-4 w-full">
+  <div class="container-x">
+    <header class="mb-4 sm:mb-6 max-w-3xl">
+      <div class="flex items-center gap-2 mb-2">
+        <div class="h-1 w-8 rounded-full bg-accent shadow-[0_0_10px_rgba(34,197,94,0.7)]"></div>
+        <p class="font-mono text-[0.65rem] sm:text-xs uppercase tracking-widest text-accent font-semibold">PREGUNTAS FRECUENTES</p>
+      </div>
+      <h2 id={`${id}-title`} class="text-2xl font-bold tracking-tight text-white sm:text-3xl md:text-4xl leading-[1.1]">
+        Respuestas directas.
+      </h2>
+    </header>
+
+    <div id="faq-list" class="max-w-3xl divide-y divide-line/60 border-y border-line/60">
+      {items.map((f, idx) => (
+        <details name="faq-accordion" class="faq-item group py-3 sm:py-3.5 transition-colors cursor-pointer" data-index={idx}>
+          <summary class="flex cursor-pointer list-none items-center justify-between gap-4 text-sm sm:text-base font-medium text-white hover:text-accent-bright transition-colors select-none">
+            <h3 class="text-sm sm:text-base font-medium tracking-normal">{f.q}</h3>
+            <span class="flex size-6 items-center justify-center rounded-full bg-surface-3/60 text-accent group-hover:bg-accent/20 transition-all">
+              <Icon name="plus" class="shrink-0 transition-transform duration-300 group-open:rotate-45" size={14} />
+            </span>
+          </summary>
+          <p class="mt-2.5 max-w-2xl text-xs sm:text-sm leading-relaxed text-muted/90">{f.a}</p>
+        </details>
+      ))}
+    </div>
   </div>
-</Section>
+</section>
+
+<script>
+  // Acordeón exclusivo: al abrir una pregunta, todas las demás se cierran automáticamente
+  const details = document.querySelectorAll<HTMLDetailsElement>('#faq-list details');
+  details.forEach((target) => {
+    target.addEventListener('toggle', () => {
+      if (target.open) {
+        details.forEach((other) => {
+          if (other !== target && other.open) {
+            other.open = false;
+          }
+        });
+      }
+    });
+  });
+</script>

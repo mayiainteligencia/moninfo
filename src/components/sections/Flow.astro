@@ -1,27 +1,48 @@
 ---
 import { flow, flowIntro } from '@/content/home';
-import Section from '@/components/ui/Section.astro';
 import Icon from '@/components/ui/Icon.astro';
-import Reveal from '@/components/motion/Reveal.astro';
 interface Props { id?: string }
 const { id = 'flujo' } = Astro.props;
 ---
-<Section id={id} eyebrow={flowIntro.eyebrow} title={flowIntro.title} lead={flowIntro.lead}>
-  <div data-timeline class="relative [--p:1]">
-    <div class="absolute bottom-0 left-5 top-0 w-px bg-line md:bottom-auto md:left-0 md:right-0 md:top-5 md:h-px md:w-auto" aria-hidden="true">
-      <div class="h-full w-full origin-top bg-[image:var(--gradient-brand)] [transform:scaleY(var(--p))] md:origin-left md:[transform:scaleX(var(--p))]"></div>
+<section id={id} aria-labelledby={`${id}-title`} class="relative py-2 sm:py-4 w-full">
+  <div class="container-x">
+    <header class="mb-6 sm:mb-8 max-w-3xl">
+      <div class="flex items-center gap-2 mb-2">
+        <div class="h-1 w-8 rounded-full bg-accent shadow-[0_0_10px_rgba(34,197,94,0.7)]"></div>
+        <p class="font-mono text-[0.65rem] sm:text-xs uppercase tracking-widest text-accent font-semibold">{flowIntro.eyebrow}</p>
+      </div>
+      <h2 id={`${id}-title`} class="text-2xl font-bold tracking-tight text-white sm:text-3xl md:text-4xl leading-[1.1]">
+        {flowIntro.title}
+      </h2>
+      <p class="mt-2 text-xs sm:text-sm text-muted/90 max-w-2xl leading-relaxed">
+        {flowIntro.lead}
+      </p>
+    </header>
+
+    <div data-timeline class="relative [--p:1] mt-6 sm:mt-8">
+      <!-- Línea conectora de la señal -->
+      <div class="absolute bottom-0 left-5 top-0 w-px bg-line-strong md:bottom-auto md:left-0 md:right-0 md:top-5 md:h-px md:w-auto" aria-hidden="true">
+        <div class="h-full w-full origin-top bg-gradient-to-r from-accent via-accent-bright to-accent shadow-[0_0_10px_rgba(34,197,94,0.5)] md:origin-left"></div>
+      </div>
+
+      <ol class="grid gap-4 sm:gap-6 md:grid-cols-4">
+        {flow.map((s, i) => (
+          <li data-step class="group relative pl-12 md:pl-0 md:pt-12">
+            <!-- Nodo pulsante -->
+            <span class="dot absolute left-0 top-0 flex size-9 sm:size-10 items-center justify-center rounded-full border border-accent/80 bg-surface-2 text-accent shadow-[0_0_15px_rgba(34,197,94,0.3)] transition-all duration-300 group-hover:scale-110 group-hover:border-accent group-hover:shadow-[0_0_20px_rgba(34,197,94,0.5)]">
+              <Icon name={s.icon} size={18} />
+            </span>
+            <div class="rounded-xl border border-line-strong/60 bg-surface-2/60 p-4 backdrop-blur-xl shadow-card transition-all duration-300 group-hover:border-accent/50 group-hover:bg-surface-2/80">
+              <div class="flex items-center justify-between font-mono text-[0.65rem] text-subtle">
+                <span class="text-accent font-semibold">ETAPA 0{i + 1}</span>
+                <span class="size-1.5 rounded-full bg-accent/60"></span>
+              </div>
+              <h3 class="mt-1.5 text-base sm:text-lg font-semibold text-white">{s.title}</h3>
+              <p class="mt-2 text-xs text-muted leading-relaxed">{s.text}</p>
+            </div>
+          </li>
+        ))}
+      </ol>
     </div>
-    <Reveal as="ol" class="grid gap-10 md:grid-cols-4 md:gap-6" stagger>
-      {flow.map((s, i) => (
-        <li data-step class="group relative pl-14 md:pl-0 md:pt-14 [&.is-active_.dot]:border-accent [&.is-active_.dot]:text-accent [&.is-active_.dot]:shadow-glow">
-          <span class="dot absolute left-0 top-0 flex size-10 items-center justify-center rounded-full border border-line-strong bg-bg text-muted transition-all duration-500">
-            <Icon name={s.icon} size={18} />
-          </span>
-          <p class="font-mono text-xs text-subtle">0{i + 1}</p>
-          <h3 class="mt-1 text-2xl font-semibold">{s.title}</h3>
-          <p class="mt-3 text-sm leading-relaxed text-muted">{s.text}</p>
-        </li>
-      ))}
-    </Reveal>
   </div>
-</Section>
+</section>

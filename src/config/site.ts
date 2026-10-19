@@ -19,11 +19,8 @@ export const site = {
     email: '',
   },
   social: {
-    linkedin: 'https://www.linkedin.com/company/mayia-edgenet/',
-    x: 'https://x.com/EdgenetData',
-    instagram: 'https://www.instagram.com/mayia.inteligencia.artificial/',
-    facebook: 'https://www.facebook.com/MAYiaInteligenciaArtificial',
-    youtube: 'https://www.youtube.com/@MAYIAInteligenciaArtificial',
+    linkedin: 'https://www.linkedin.com/company/mayia-edgenet/posts/',
+    instagram: 'https://www.instagram.com/mayia.inteligencia.artificial?mdxt=NXpzbHlwczhpdzh0',
   },
 } as const;
 

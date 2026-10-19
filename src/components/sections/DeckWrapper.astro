@@ -1,0 +1,170 @@
+---
+import Escucha from '@/components/sections/Escucha.astro';
+import Flow from '@/components/sections/Flow.astro';
+import Divisiones from '@/components/sections/Divisiones.astro';
+import SOC from '@/components/sections/SOC.astro';
+import Campanas from '@/components/sections/Campanas.astro';
+import FAQ from '@/components/sections/FAQ.astro';
+import { faqHome } from '@/content/home';
+import Icon from '@/components/ui/Icon.astro';
+
+const slides = [
+  { id: 'slide-escucha', title: 'MAYIA ESCUCHA', tag: '01 / 06' },
+  { id: 'slide-flujo', title: 'FLUJO DE SEÑAL', tag: '02 / 06' },
+  { id: 'slide-divisiones', title: 'INFRAESTRUCTURA', tag: '03 / 06' },
+  { id: 'slide-soc', title: 'CENTRO SOC', tag: '04 / 06' },
+  { id: 'slide-campanas', title: 'CEREBRO ELECTORAL', tag: '05 / 06' },
+  { id: 'slide-faq', title: 'PREGUNTAS FRECUENTES', tag: '06 / 06' },
+];
+---
+
+<div id="slides-deck-wrapper" class="relative w-full bg-bg">
+  <div id="slides-deck" class="relative h-screen w-full overflow-hidden bg-bg isolate">
+    <!-- Luces ambientales de fondo para el deck -->
+    <div class="pointer-events-none absolute -left-40 top-1/4 -z-10 size-[600px] rounded-full bg-accent/8 blur-[150px]" aria-hidden="true"></div>
+    <div class="pointer-events-none absolute -right-40 bottom-1/4 -z-10 size-[600px] rounded-full bg-accent/6 blur-[150px]" aria-hidden="true"></div>
+
+    {/* HUD Telemetría Superior de Navegación de Diapositivas */}
+    <header class="pointer-events-auto absolute top-16 sm:top-20 left-0 right-0 z-40 flex justify-center px-4">
+      <div class="flex items-center gap-3 sm:gap-5 rounded-full border border-line-strong/80 bg-surface-2/90 px-4 py-2 backdrop-blur-2xl shadow-xl shadow-black/60">
+        <!-- Indicador de señal en vivo y Título Dinámico -->
+        <div class="flex items-center gap-2.5">
+          <span class="relative flex size-2">
+            <span class="absolute inline-flex h-full w-full animate-ping rounded-full bg-accent opacity-75"></span>
+            <span class="relative inline-flex size-2 rounded-full bg-accent"></span>
+          </span>
+          <span id="deck-hud-title" class="font-mono text-xs sm:text-sm font-semibold tracking-wide text-white">
+            MAYIA ESCUCHA
+          </span>
+        </div>
+
+        <span class="h-3 w-px bg-line-strong"></span>
+
+        <!-- Paginador / Dots interactivos -->
+        <div class="flex items-center gap-1.5" role="tablist" aria-label="Navegación de diapositivas">
+          {slides.map((s, idx) => (
+            <button
+              type="button"
+              data-deck-dot={idx}
+              aria-label={`Ir a diapositiva ${s.title}`}
+              class={`size-2 sm:size-2.5 rounded-full transition-all duration-300 ${
+                idx === 0 ? 'bg-accent scale-125 shadow-[0_0_8px_#22c55e]' : 'bg-line-strong hover:bg-subtle'
+              }`}
+            />
+          ))}
+        </div>
+
+        <span class="h-3 w-px bg-line-strong"></span>
+
+        <!-- Tag de índice -->
+        <div class="font-mono text-[0.65rem] sm:text-xs text-accent-bright font-bold">
+          <span id="deck-hud-index">01 / 06</span>
+        </div>
+      </div>
+    </header>
+
+    <!-- Contenedor de las 6 Diapositivas Superpuestas (Con soporte my-auto para que nada se corte) -->
+    <div id="deck-viewport" class="relative h-full w-full">
+      <!-- Diapositiva 1: Escucha -->
+      <article
+        class="deck-slide absolute inset-0 flex h-full w-full flex-col justify-start items-center overflow-y-auto overflow-x-hidden px-4 sm:px-6 md:px-8 pt-24 sm:pt-28 pb-16"
+        data-slide-index="0"
+        data-slide-title="MAYIA ESCUCHA"
+        data-slide-tag="01 / 06"
+      >
+        <div class="my-auto w-full max-w-7xl">
+          <Escucha />
+        </div>
+      </article>
+
+      <!-- Diapositiva 2: Flujo -->
+      <article
+        class="deck-slide absolute inset-0 flex h-full w-full flex-col justify-start items-center overflow-y-auto overflow-x-hidden px-4 sm:px-6 md:px-8 pt-24 sm:pt-28 pb-16"
+        data-slide-index="1"
+        data-slide-title="FLUJO DE SEÑAL"
+        data-slide-tag="02 / 06"
+      >
+        <div class="my-auto w-full max-w-7xl">
+          <Flow />
+        </div>
+      </article>
+
+      <!-- Diapositiva 3: Divisiones -->
+      <article
+        class="deck-slide absolute inset-0 flex h-full w-full flex-col justify-start items-center overflow-y-auto overflow-x-hidden px-4 sm:px-6 md:px-8 pt-24 sm:pt-28 pb-16"
+        data-slide-index="2"
+        data-slide-title="INFRAESTRUCTURA"
+        data-slide-tag="03 / 06"
+      >
+        <div class="my-auto w-full max-w-7xl">
+          <Divisiones />
+        </div>
+      </article>
+
+      <!-- Diapositiva 4: SOC -->
+      <article
+        class="deck-slide absolute inset-0 flex h-full w-full flex-col justify-start items-center overflow-y-auto overflow-x-hidden px-4 sm:px-6 md:px-8 pt-24 sm:pt-28 pb-16"
+        data-slide-index="3"
+        data-slide-title="CENTRO SOC"
+        data-slide-tag="04 / 06"
+      >
+        <div class="my-auto w-full max-w-7xl">
+          <SOC />
+        </div>
+      </article>
+
+      <!-- Diapositiva 5: Cerebro Electoral -->
+      <article
+        class="deck-slide absolute inset-0 flex h-full w-full flex-col justify-start items-center overflow-y-auto overflow-x-hidden px-4 sm:px-6 md:px-8 pt-24 sm:pt-28 pb-16"
+        data-slide-index="4"
+        data-slide-title="CEREBRO ELECTORAL"
+        data-slide-tag="05 / 06"
+      >
+        <div class="my-auto w-full max-w-7xl">
+          <Campanas />
+        </div>
+      </article>
+
+      <!-- Diapositiva 6: FAQ -->
+      <article
+        class="deck-slide absolute inset-0 flex h-full w-full flex-col justify-start items-center overflow-y-auto overflow-x-hidden px-4 sm:px-6 md:px-8 pt-24 sm:pt-28 pb-16"
+        data-slide-index="5"
+        data-slide-title="PREGUNTAS FRECUENTES"
+        data-slide-tag="06 / 06"
+      >
+        <div class="my-auto w-full max-w-7xl">
+          <FAQ items={faqHome} />
+        </div>
+      </article>
+    </div>
+
+    <!-- Indicador de Scroll Horizontal / Desliza hacia abajo para siguiente diapositiva -->
+    <div class="pointer-events-none absolute bottom-3 sm:bottom-4 left-0 right-0 z-30 flex justify-between items-center px-6 sm:px-12 font-mono text-[0.65rem] text-subtle">
+      <div class="flex items-center gap-2">
+        <span class="inline-block size-1.5 rounded-full bg-accent animate-pulse"></span>
+        <span>SCROLL CONTROLA DIAPOSITIVAS</span>
+      </div>
+      <div class="flex items-center gap-2 text-muted">
+        <span>SIGUIENTE</span>
+        <Icon name="arrow-right" size={12} class="rotate-90 text-accent animate-bounce" />
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+  /* Compactar paddings dentro de las diapositivas para visualización perfecta */
+  :global(#slides-deck .deck-slide section) {
+    padding-top: 0.5rem !important;
+    padding-bottom: 0.75rem !important;
+    border-top: none !important;
+  }
+  :global(#slides-deck .deck-slide section header) {
+    margin-bottom: 1.25rem !important;
+  }
+  :global(#slides-deck .deck-slide) {
+    scrollbar-width: thin;
+    scrollbar-color: rgba(34, 197, 94, 0.4) transparent;
+    -webkit-overflow-scrolling: touch;
+  }
+</style>

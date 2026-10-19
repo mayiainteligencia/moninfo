@@ -2,27 +2,94 @@
 import { soc } from '@/content/home';
 import { images } from '@/config/assets';
 import Img from '@/components/ui/Img.astro';
-import Parallax from '@/components/motion/Parallax.astro';
-import Reveal from '@/components/motion/Reveal.astro';
-import TextSplit from '@/components/motion/TextSplit.astro';
+import Button from '@/components/ui/Button.astro';
+import Icon from '@/components/ui/Icon.astro';
 ---
-<section id="soc" aria-labelledby="soc-title" class="relative isolate overflow-hidden">
-  <Parallax speed={0.18} class="absolute inset-0 -z-10">
-    <Img src={images.soc.src} alt={images.soc.alt} width={images.soc.width} height={images.soc.height} class="h-full w-full object-cover" />
-  </Parallax>
-  <div class="absolute inset-0 -z-10 bg-gradient-to-t from-bg via-bg/75 to-bg/30" aria-hidden="true"></div>
-  <div class="pointer-events-none absolute inset-0 -z-10" aria-hidden="true" style="background: radial-gradient(80% 60% at 75% 50%, rgba(34, 197, 94, 0.14), transparent 70%);"></div>
-  <div class="container-x flex min-h-[80vh] flex-col justify-end py-24">
-    <Reveal><p class="eyebrow mb-4">{soc.eyebrow}</p></Reveal>
-    <TextSplit id="soc-title" as="h2" class="max-w-3xl text-4xl font-semibold md:text-7xl tracking-tight" text={soc.title} />
-    <Reveal delay={0.1}><p class="mt-6 max-w-xl text-lg text-fg/80 leading-relaxed">{soc.body}</p></Reveal>
-    <Reveal class="mt-12 grid max-w-3xl gap-3.5 sm:grid-cols-3" stagger>
-      {soc.overlay.map((o) => (
-        <div class="rounded-xl border border-line-strong/60 bg-surface/80 p-4 font-mono backdrop-blur-xl shadow-md transition-all duration-300 hover:border-accent/60 hover:shadow-[0_0_20px_rgba(34,197,94,0.2)]">
-          <p class="text-[0.68rem] uppercase tracking-wider text-subtle">{o.label}</p>
-          <p class="mt-1.5 text-xl font-bold text-accent-bright">{o.value}</p>
+<section id="soc" aria-labelledby="soc-title" class="relative py-1 sm:py-2 w-full">
+  <div class="container-x">
+    <div class="grid gap-6 lg:grid-cols-12 items-center">
+      <!-- Columna Izquierda: Información Editorial y Métricas (5 columnas) -->
+      <div class="lg:col-span-5 flex flex-col justify-center">
+        <div class="flex items-center gap-2 mb-2">
+          <div class="h-1 w-8 rounded-full bg-accent shadow-[0_0_10px_rgba(34,197,94,0.7)]"></div>
+          <p class="font-mono text-[0.65rem] sm:text-xs uppercase tracking-widest text-accent font-semibold">
+            CENTRO DE OPERACIONES SOBERANO
+          </p>
         </div>
-      ))}
-    </Reveal>
+
+        <h2 id="soc-title" class="text-2xl font-bold tracking-tight text-white sm:text-3xl md:text-4xl leading-[1.1]">
+          Un SOC real, <span class="text-accent">que puedes visitar.</span>
+        </h2>
+
+        <p class="mt-2 text-xs sm:text-sm text-muted/90 leading-relaxed">
+          {soc.body} Conoce de primera mano cómo opera la infraestructura de monitoreo, servidores y análisis de datos en territorio nacional.
+        </p>
+
+        <!-- 3 Tarjetas de Telemetría Táctica -->
+        <div class="mt-4 grid grid-cols-3 gap-2 sm:gap-2.5">
+          {soc.overlay.map((o) => (
+            <div class="rounded-xl border border-line-strong/60 bg-surface-2/70 p-2.5 sm:p-3 font-mono backdrop-blur-xl transition-all duration-300 hover:border-accent/60 hover:shadow-[0_0_15px_rgba(34,197,94,0.15)]">
+              <p class="text-[0.6rem] sm:text-[0.65rem] uppercase tracking-wider text-subtle truncate">{o.label}</p>
+              <p class="mt-1 text-sm sm:text-base md:text-lg font-bold text-accent-bright truncate">{o.value}</p>
+            </div>
+          ))}
+        </div>
+
+        <!-- Botón de Acción -->
+        <div class="mt-5 flex items-center gap-3">
+          <Button href="#contacto" variant="primary">
+            <span>Agendar visita presencial</span>
+            <span class="flex size-5 items-center justify-center rounded-full bg-accent text-bg shadow-sm transition-transform duration-300 group-hover:translate-x-0.5">
+              <Icon name="arrow-right" size={12} class="-rotate-45" />
+            </span>
+          </Button>
+        </div>
+      </div>
+
+      <!-- Columna Derecha: Pantalla del SOC con imagen real y telemetría superpuesta (7 columnas) -->
+      <div class="lg:col-span-7">
+        <div class="group relative overflow-hidden rounded-2xl border border-line-strong/80 bg-surface-2/80 shadow-2xl shadow-black/80 transition-all duration-500 hover:border-accent/60 hover:shadow-[0_0_30px_rgba(34,197,94,0.2)]">
+          <!-- Imagen del SOC real -->
+          <div class="aspect-[16/10] sm:aspect-[16/9] w-full overflow-hidden relative">
+            <Img
+              src={images.soc.src}
+              alt={images.soc.alt}
+              width={images.soc.width}
+              height={images.soc.height}
+              class="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
+            />
+            <!-- Gradientes de contraste cibernético -->
+            <div class="pointer-events-none absolute inset-0 bg-gradient-to-t from-bg via-bg/20 to-transparent" aria-hidden="true"></div>
+            <div class="pointer-events-none absolute inset-0 bg-gradient-to-r from-bg/40 via-transparent to-transparent" aria-hidden="true"></div>
+          </div>
+
+          <!-- Badges de Estado Superpuestos en Vivo -->
+          <div class="absolute top-3 left-3 flex items-center gap-2 rounded-full border border-line-strong/80 bg-black/75 px-3 py-1 font-mono text-[0.65rem] text-white backdrop-blur-md">
+            <span class="relative flex size-2">
+              <span class="absolute inline-flex h-full w-full animate-ping rounded-full bg-accent opacity-75"></span>
+              <span class="relative inline-flex size-2 rounded-full bg-accent"></span>
+            </span>
+            <span class="text-accent font-semibold">EDGENET SOC/NOC</span>
+            <span class="text-subtle">|</span>
+            <span>EN VIVO</span>
+          </div>
+
+          <div class="absolute top-3 right-3 rounded-full border border-line/60 bg-black/70 px-2.5 py-0.5 font-mono text-[0.6rem] text-accent-bright backdrop-blur-md">
+            CDMX · MÉXICO
+          </div>
+
+          <!-- Pie del panel con metadatos técnicos -->
+          <div class="absolute bottom-3 left-3 right-3 flex items-center justify-between rounded-xl border border-line/50 bg-black/80 px-3.5 py-2 font-mono text-[0.65rem] text-subtle backdrop-blur-md">
+            <div class="flex items-center gap-2">
+              <span class="text-accent">●</span>
+              <span class="text-white font-medium">Soberanía de Datos Nacional</span>
+            </div>
+            <div class="text-accent font-semibold">
+              99.99% DISPONIBILIDAD
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </section>

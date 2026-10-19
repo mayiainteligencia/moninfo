@@ -1,18 +1,37 @@
 ---
 import { hero } from '@/content/campanas';
-import Section from '@/components/ui/Section.astro';
 import Button from '@/components/ui/Button.astro';
 import Icon from '@/components/ui/Icon.astro';
-import Reveal from '@/components/motion/Reveal.astro';
 ---
-<Section id="campanas" eyebrow={hero.eyebrow} title="Cerebro Electoral" lead={hero.lead}>
-  <Reveal class="grid gap-4 md:grid-cols-3" stagger>
-    {[['Menciones de candidatos', 'at-sign'], ['Tendencias de narrativa', 'trending-up'], ['Tablero de seguimiento', 'layout-dashboard']].map(([t, i]) => (
-      <div class="flex items-center gap-4 rounded-lg hairline bg-surface-2/60 p-5">
-        <span class="flex size-10 items-center justify-center rounded-md bg-surface-3 text-accent"><Icon name={i!} /></span>
-        <span class="font-medium">{t}</span>
+<section id="campanas" aria-labelledby="campanas-title" class="relative py-2 sm:py-4 w-full">
+  <div class="container-x">
+    <header class="mb-4 sm:mb-6 max-w-3xl">
+      <div class="flex items-center gap-2 mb-2">
+        <div class="h-1 w-8 rounded-full bg-accent shadow-[0_0_10px_rgba(34,197,94,0.7)]"></div>
+        <p class="font-mono text-[0.65rem] sm:text-xs uppercase tracking-widest text-accent font-semibold">{hero.eyebrow}</p>
       </div>
-    ))}
-  </Reveal>
-  <div class="mt-10"><Button href="/campanas-politicas" variant="ghost">Conocer Cerebro Electoral<Icon name="arrow-right" size={16} class="transition-transform group-hover:translate-x-1" /></Button></div>
-</Section>
+      <h2 id="campanas-title" class="text-2xl font-bold tracking-tight text-white sm:text-3xl md:text-4xl leading-[1.1]">
+        Cerebro Electoral
+      </h2>
+      <p class="mt-2 text-xs sm:text-sm text-muted/90 max-w-2xl leading-relaxed">
+        {hero.lead}
+      </p>
+    </header>
+
+    <div class="grid gap-3 sm:gap-4 md:grid-cols-3">
+      {[['Menciones de candidatos', 'at-sign'], ['Tendencias de narrativa', 'trending-up'], ['Tablero de seguimiento', 'layout-dashboard']].map(([t, i]) => (
+        <div class="flex items-center gap-3.5 rounded-xl border border-line-strong/60 bg-surface-2/60 p-4 transition-all duration-300 hover:border-accent/60 hover:bg-surface-2/80">
+          <span class="flex size-10 items-center justify-center rounded-lg bg-surface-3 text-accent shadow-sm"><Icon name={i!} /></span>
+          <span class="font-medium text-sm sm:text-base text-white">{t}</span>
+        </div>
+      ))}
+    </div>
+    
+    <div class="mt-6">
+      <Button href="/campanas-politicas" variant="primary">
+        <span>Conocer Cerebro Electoral</span>
+        <Icon name="arrow-right" size={14} class="transition-transform group-hover:translate-x-1" />
+      </Button>
+    </div>
+  </div>
+</section>
